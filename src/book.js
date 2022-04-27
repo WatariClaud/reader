@@ -7,6 +7,7 @@ import {
     useQuery,
     gql
 } from "@apollo/client";
+import client from './client';
 
 const GET_BOOKS = gql`
   query getBook{
@@ -32,11 +33,9 @@ function Items({ currentItems }) {
                     item.content.substring(token.position[0] - 1, token.position[1] + 1).length - 1), 
                     item.content.substring(token.position[0] - 1, token.position[1] + 1).charAt(
                       item.content.substring(token.position[0] - 1, token.position[1] + 1).length - 1) ?
-                      item.content.substring(token.position[0] - 1, token.position[1] + 2).charAt(
-                        item.content.substring(token.position[0] - 1, token.position[1] + 2).length - 1) ?
-                        item.content.substring(token.position[0] - 1, token.position[1] + 2).charAt(
-                          item.content.substring(token.position[0] - 1, token.position[1] + 2).length - 1) :  item.content.substring(token.position[0] - 1, token.position[1] + 1).charAt(
-                            item.content.substring(token.position[0] - 1, token.position[1] + 1).length - 1) : null
+                      item.content.substring(token.position[0] - 1, token.position[1] + _index_+1).charAt(
+                        item.content.substring(token.position[0] - 1, token.position[1] + _index_).length - 1) ? item.content.substring(token.position[0] - 1, token.position[1] + 1).charAt(
+                          item.content.substring(token.position[0] - 1, token.position[1] + 1).length - 1) : null : null
                     )}</span></span>;
           })}
         </p>
@@ -53,11 +52,11 @@ const GetBook = ({itemsPerPage}) => {
     useEffect(() => {
         const endOffset = itemOffset + itemsPerPage;
         setCurrentItems(!loading ? data?.book.pages.slice(itemOffset, endOffset) : [0, 2]);
-        setPageCount(Math.ceil(data?.book.pages.length / itemsPerPage));
+        setPageCount(Math.ceil(data?.book.pages.length / itemsPerPage) || 2);
         setTimeout(() => {
           setValue(1);
         }, 1000);
-        clearTimeout();
+        // console.log(getBooks);
     }, [itemOffset, itemsPerPage, value]);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error...! {` ${error.message}`}</p>; 

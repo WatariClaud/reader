@@ -2,18 +2,12 @@ import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import GetBook from './book';
-import reportWebVitals from './reportWebVitals';
-import {
-  ApolloClient,
+import reportWebVitals from './reportWebVitals';import {
   ApolloProvider,
-  InMemoryCache,
 } from "@apollo/client";
+import client from './client';
 const root = ReactDOM.createRoot(document.getElementById('root'));
   
-const client = new ApolloClient({
-  uri: 'https://fullstack-engineer-test-n4ouilzfna-uc.a.run.app/graphql',
-  cache: new InMemoryCache()
-});
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
