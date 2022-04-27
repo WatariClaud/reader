@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import GetBook from './book';
@@ -17,8 +17,8 @@ const client = new ApolloClient({
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <GetBook/>
-    </ApolloProvider>,
+      <GetBook itemsPerPage={2}/>
+    </ApolloProvider>
   </React.StrictMode>
 );
 
