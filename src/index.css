@@ -59,3 +59,32 @@ code {
   text-decoration: none;
   cursor: pointer;
 }
+@media screen and (max-width:768px) {
+  .res-p {
+    width: 80%;
+  }
+  .ul  {
+    margin-left: -1rem;
+  }
+}
+@media screen and (max-width:350px) {
+  body {
+    overflow-x: hidden;
+  }
+  .res-p {
+    width: 90%;
+  }
+  .pagination {
+    margin-left: -1rem;
+  }
+  .page-item {
+    width: 50px;
+    height: 25px;
+  }
+  .page-link {
+    font-size: 0.9rem;
+  }
+  .ul  {
+    margin-left: -1rem;
+  }
+}
