@@ -1,7 +1,7 @@
 {
   "name": "ello-book-service",
   "version": "0.1.0",
-  "homepage": "https://claudwatari95.github.io",
+  "homepage": "https://claudwatari95.github.io/reader",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.5.10",
